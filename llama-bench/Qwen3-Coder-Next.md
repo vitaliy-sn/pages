@@ -12,13 +12,36 @@ root@e63e39a0d495:/app# ./llama-bench -ctk f16 -ctv f16 -fa 1 -m /models/unsloth
 | qwen3next 80B.A3B Q2_K - Medium        |  26.51 GiB |    79.67 B | CUDA       |  99 |  1 |           tg128 |         75.68 ± 0.33 |
 
 build: a69d54f (1)
+```
 
+
+```bash
+root@383389436a50:/# llama-bench -ctk f16 -ctv f16 -fa 1 -m /models/unsloth/Qwen3-Coder-Next-UD-IQ3_S.gguf,/models/bartowski/Qwen3-Coder-Next-GGUF/Qwen_Qwen3-Coder-Next-Q2_K_L.gguf
+ggml_cuda_init: found 2 CUDA devices (Total VRAM: 31658 MiB):
+  Device 0: NVIDIA GeForce RTX 5070 Ti, compute capability 12.0, VMM: yes, VRAM: 15808 MiB
+  Device 1: NVIDIA GeForce RTX 5060 Ti, compute capability 12.0, VMM: yes, VRAM: 15850 MiB
+| model                                |       size |     params | backend    | ngl | fa |            test |                  t/s |
+| ------------------------------------ | ---------: | ---------: | ---------- | --: | -: | --------------: | -------------------: |
+| qwen3next 80B.A3B IQ3_S - 3.4375 bpw |  27.65 GiB |    79.67 B | CUDA       |  99 |  1 |           pp512 |      1536.58 ± 12.01 |
+| qwen3next 80B.A3B IQ3_S - 3.4375 bpw |  27.65 GiB |    79.67 B | CUDA       |  99 |  1 |           tg128 |         95.71 ± 0.82 |
+| qwen3next 80B.A3B Q2_K - Medium      |  26.51 GiB |    79.67 B | CUDA       |  99 |  1 |           pp512 |      1366.49 ± 13.61 |
+| qwen3next 80B.A3B Q2_K - Medium      |  26.51 GiB |    79.67 B | CUDA       |  99 |  1 |           tg128 |        107.93 ± 0.98 |
+
+build: 9f102a1 (1)
+```
+
+
+
+```bash
 root@b7d7de86a1a8:/app# ./llama-bench -ctk f16 -ctv f16 -fa 1 -m /models/bartowski/Qwen3-Coder-Next-GGUF/Qwen_Qwen3-Coder-Next-Q4_K_L.gguf -ngl 30
 | model                           |       size |     params | backend    | ngl | fa |            test |                  t/s |
 | ------------------------------- | ---------: | ---------: | ---------- | --: | -: | --------------: | -------------------: |
 | qwen3next 80B.A3B Q4_K - Medium |  45.59 GiB |    79.67 B | CUDA       |  30 |  1 |           pp512 |        397.30 ± 4.48 |
 | qwen3next 80B.A3B Q4_K - Medium |  45.59 GiB |    79.67 B | CUDA       |  30 |  1 |           tg128 |         27.23 ± 0.18 |
+```
 
+
+```bash
 build: a69d54f (1)
 root@b7d7de86a1a8:/app# ./llama-bench -ctk f16 -ctv f16 -fa 1 -m /models/bartowski/Qwen3-Coder-Next-GGUF/Qwen_Qwen3-Coder-Next-Q4_K_L.gguf -ot ".([0-3].ffn_up|[0-3].ffn_down|[0-3].ffn_gate)_exps.=CPU"
 | model                           |       size |     params | backend    | ngl | fa | ot                    |            test |                  t/s |
@@ -27,6 +50,20 @@ root@b7d7de86a1a8:/app# ./llama-bench -ctk f16 -ctv f16 -fa 1 -m /models/bartows
 | qwen3next 80B.A3B Q4_K - Medium |  45.59 GiB |    79.67 B | CUDA       |  99 |  1 | .([0-3].ffn_up|[0-3].ffn_down|[0-3].ffn_gate)_exps.=CPU |           tg128 |         49.06 ± 0.65 |
 
 build: a69d54f (1)
+```
+
+
+```bash
+root@383389436a50:/# llama-bench -ctk f16 -ctv f16 -fa 1 -m /models/bartowski/Qwen3-Coder-Next-GGUF/Qwen_Qwen3-Coder-Next-Q4_K_L.gguf -ot ".([0-3].ffn_up|[0-3].ffn_down|[0-3].ffn_gate)_exps.=CPU"
+ggml_cuda_init: found 2 CUDA devices (Total VRAM: 31658 MiB):
+  Device 0: NVIDIA GeForce RTX 5070 Ti, compute capability 12.0, VMM: yes, VRAM: 15808 MiB
+  Device 1: NVIDIA GeForce RTX 5060 Ti, compute capability 12.0, VMM: yes, VRAM: 15850 MiB
+| model                          |       size |     params | backend    | ngl | fa | ot                    |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | -: | --------------------- | --------------: | -------------------: |
+| qwen3next 80B.A3B Q4_K - Medium |  45.59 GiB |    79.67 B | CUDA       |  99 |  1 | .([0-3].ffn_up|[0-3].ffn_down|[0-3].ffn_gate)_exps.=CPU |           pp512 |        450.01 ± 5.31 |
+| qwen3next 80B.A3B Q4_K - Medium |  45.59 GiB |    79.67 B | CUDA       |  99 |  1 | .([0-3].ffn_up|[0-3].ffn_down|[0-3].ffn_gate)_exps.=CPU |           tg128 |         51.69 ± 1.00 |
+
+build: 9f102a1 (1)
 ```
 
 
