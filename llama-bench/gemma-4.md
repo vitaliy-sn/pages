@@ -67,4 +67,16 @@ ggml_cuda_init: found 2 CUDA devices (Total VRAM: 31692 MiB):
 build: ff5ef82 (1)
 ```
 
+```bash
+root@7ff93faf0379:/# llama-bench -ctk f16 -ctv f16 -fa 1 -m /models/bartowski/gemma-4-26B-A4B-it-GGUF/google_gemma-4-26B-A4B-it-Q8_0.gguf
+ggml_cuda_init: found 2 CUDA devices (Total VRAM: 31692 MiB):
+  Device 0: NVIDIA GeForce RTX 5070 Ti, compute capability 12.0, VMM: yes, VRAM: 15842 MiB
+  Device 1: NVIDIA GeForce RTX 5060 Ti, compute capability 12.0, VMM: yes, VRAM: 15850 MiB
+| model                          |       size |     params | backend    | ngl | fa |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | -: | --------------: | -------------------: |
+| gemma4 ?B Q8_0                 |  25.00 GiB |    25.23 B | CUDA       |  99 |  1 |           pp512 |      4181.96 ± 19.96 |
+| gemma4 ?B Q8_0                 |  25.00 GiB |    25.23 B | CUDA       |  99 |  1 |           tg128 |         95.10 ± 0.95 |
+
+build: ff5ef82 (1)
+```
 
