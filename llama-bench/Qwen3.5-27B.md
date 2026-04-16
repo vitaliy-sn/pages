@@ -81,3 +81,48 @@ ggml_cuda_init: found 2 CUDA devices (Total VRAM: 31658 MiB):
 
 build: 990e4d9 (1)
 ```
+
+
+## b8763 (build: ff5ef82)
+
+```
+root@d28752cfae71:/# llama-bench -ctk f16 -ctv f16 -fa 1 -m /models/bartowski/Qwen3.5-27B-GGUF/Qwen_Qwen3.5-27B-Q3_K_S.gguf
+ggml_cuda_init: found 2 CUDA devices (Total VRAM: 31692 MiB):
+  Device 0: NVIDIA GeForce RTX 5070 Ti, compute capability 12.0, VMM: yes, VRAM: 15842 MiB
+  Device 1: NVIDIA GeForce RTX 5060 Ti, compute capability 12.0, VMM: yes, VRAM: 15850 MiB
+| model                          |       size |     params | backend    | ngl | fa |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | -: | --------------: | -------------------: |
+| qwen35 27B Q3_K - Small        |  11.76 GiB |    26.90 B | CUDA       |  99 |  1 |           pp512 |       1105.55 ± 9.38 |
+| qwen35 27B Q3_K - Small        |  11.76 GiB |    26.90 B | CUDA       |  99 |  1 |           tg128 |         33.16 ± 0.07 |
+
+root@d28752cfae71:/# llama-bench -ctk f16 -ctv f16 -fa 1 -m /models/bartowski/Qwen3.5-27B-GGUF/Qwen_Qwen3.5-27B-Q4_K_M.gguf
+| model                          |       size |     params | backend    | ngl | fa |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | -: | --------------: | -------------------: |
+| qwen35 27B Q4_K - Medium       |  15.94 GiB |    26.90 B | CUDA       |  99 |  1 |           pp512 |      1269.32 ± 12.86 |
+| qwen35 27B Q4_K - Medium       |  15.94 GiB |    26.90 B | CUDA       |  99 |  1 |           tg128 |         28.47 ± 0.04 |
+
+root@d28752cfae71:/# llama-bench -ctk f16 -ctv f16 -fa 1 -m /models/bartowski/Qwen3.5-27B-GGUF/Qwen_Qwen3.5-27B-Q5_K_S.gguf
+| model                          |       size |     params | backend    | ngl | fa |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | -: | --------------: | -------------------: |
+| qwen35 27B Q5_K - Small        |  17.79 GiB |    26.90 B | CUDA       |  99 |  1 |           pp512 |      1270.67 ± 13.07 |
+| qwen35 27B Q5_K - Small        |  17.79 GiB |    26.90 B | CUDA       |  99 |  1 |           tg128 |         26.14 ± 0.05 |
+
+root@d28752cfae71:/# llama-bench -ctk f16 -ctv f16 -fa 1 -m /models/bartowski/Qwen3.5-27B-GGUF/Qwen_Qwen3.5-27B-Q5_K_M.gguf
+| model                          |       size |     params | backend    | ngl | fa |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | -: | --------------: | -------------------: |
+| qwen35 27B Q5_K - Medium       |  18.57 GiB |    26.90 B | CUDA       |  99 |  1 |           pp512 |      1219.94 ± 11.83 |
+| qwen35 27B Q5_K - Medium       |  18.57 GiB |    26.90 B | CUDA       |  99 |  1 |           tg128 |         25.04 ± 0.07 |
+
+root@d28752cfae71:/# llama-bench -ctk f16 -ctv f16 -fa 1 -m /models/bartowski/Qwen3.5-27B-GGUF/Qwen_Qwen3.5-27B-Q5_K_L.gguf
+| model                          |       size |     params | backend    | ngl | fa |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | -: | --------------: | -------------------: |
+| qwen35 27B Q5_K - Medium       |  19.30 GiB |    26.90 B | CUDA       |  99 |  1 |           pp512 |      1219.06 ± 12.62 |
+| qwen35 27B Q5_K - Medium       |  19.30 GiB |    26.90 B | CUDA       |  99 |  1 |           tg128 |         24.63 ± 0.00 |
+
+root@d28752cfae71:/# llama-bench -ctk f16 -ctv f16 -fa 1 -m /models/bartowski/Qwen3.5-27B-GGUF/Qwen_Qwen3.5-27B-Q6_K.gguf  
+| model                          |       size |     params | backend    | ngl | fa |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | -: | --------------: | -------------------: |
+| qwen35 27B Q6_K                |  21.49 GiB |    26.90 B | CUDA       |  99 |  1 |           pp512 |       1102.83 ± 8.17 |
+| qwen35 27B Q6_K                |  21.49 GiB |    26.90 B | CUDA       |  99 |  1 |           tg128 |         22.10 ± 0.01 |
+
+```
