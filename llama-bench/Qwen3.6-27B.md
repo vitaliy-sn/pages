@@ -73,3 +73,33 @@ ggml_cuda_init: found 2 CUDA devices (Total VRAM: 31692 MiB):
 
 build: 2098fd6 (1)
 ```
+
+# NVFP4
+
+```bash
+root@b00b7905dc98:/# llama-bench -ctk bf16 -ctv bf16 -fa 1 -p 8192 -n 256 -m /models/Freenixi/Abiray-Qwen3.6-27B-NVFP4.gguf                          
+ggml_cuda_init: found 2 CUDA devices (Total VRAM: 31692 MiB):
+  Device 0: NVIDIA GeForce RTX 5070 Ti, compute capability 12.0, VMM: yes, VRAM: 15842 MiB
+  Device 1: NVIDIA GeForce RTX 5060 Ti, compute capability 12.0, VMM: yes, VRAM: 15850 MiB
+| model                          |       size |     params | backend    | ngl | type_k | type_v | fa |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | -----: | -----: | -: | --------------: | -------------------: |
+| qwen35 27B NVFP4               |  17.50 GiB |    26.90 B | CUDA       |  99 |   bf16 |   bf16 |  1 |          pp8192 |       2614.15 ± 1.04 |
+| qwen35 27B NVFP4               |  17.50 GiB |    26.90 B | CUDA       |  99 |   bf16 |   bf16 |  1 |           tg256 |         28.19 ± 0.06 |
+
+build: 2098fd6 (1)
+```
+
+# b8998
+
+```bash
+root@b00b7905dc98:/# llama-bench -ctk bf16 -ctv bf16 -fa 1 -p 8192 -n 256 -m /models/bartowski/Qwen3.6-27B-GGUF/Qwen_Qwen3.6-27B-Q4_K_L.gguf
+ggml_cuda_init: found 2 CUDA devices (Total VRAM: 31692 MiB):
+  Device 0: NVIDIA GeForce RTX 5070 Ti, compute capability 12.0, VMM: yes, VRAM: 15842 MiB
+  Device 1: NVIDIA GeForce RTX 5060 Ti, compute capability 12.0, VMM: yes, VRAM: 15850 MiB
+| model                          |       size |     params | backend    | ngl | type_k | type_v | fa |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | -----: | -----: | -: | --------------: | -------------------: |
+| qwen35 27B Q4_K - Medium       |  17.20 GiB |    26.90 B | CUDA       |  99 |   bf16 |   bf16 |  1 |          pp8192 |       1822.26 ± 2.96 |
+| qwen35 27B Q4_K - Medium       |  17.20 GiB |    26.90 B | CUDA       |  99 |   bf16 |   bf16 |  1 |           tg256 |         27.91 ± 0.06 |
+
+build: 2098fd6 (1)
+```
