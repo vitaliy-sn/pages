@@ -23,3 +23,22 @@ ggml_cuda_init: found 2 CUDA devices (Total VRAM: 31692 MiB):
 
 build: ff5ef82 (1)
 ```
+
+```bash
+root@b00b7905dc98:/# llama-bench -ctk bf16 -ctv bf16 -fa 1 -p 16384 -n 1024 -m /models/bartowski/Qwen3.6-35B-A3B-GGUF/Qwen_Qwen3.6-35B-A3B-Q5_K_L.gguf 
+| model                          |       size |     params | backend    | ngl | type_k | type_v | fa |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | -----: | -----: | -: | --------------: | -------------------: |
+| qwen35moe 35B.A3B Q5_K - Medium |  23.58 GiB |    34.66 B | CUDA       |  99 |   bf16 |   bf16 |  1 |         pp16384 |      5204.29 ± 21.08 |
+| qwen35moe 35B.A3B Q5_K - Medium |  23.58 GiB |    34.66 B | CUDA       |  99 |   bf16 |   bf16 |  1 |          tg1024 |        124.68 ± 0.61 |
+
+build: 2098fd6 (1)
+
+root@b00b7905dc98:/# llama-bench -ctk bf16 -ctv bf16 -fa 1 -p 16384 -n 1024 -m /models/Qwen3.6-35B-A3B-NVFP4-GGUF.gguf
+| model                          |       size |     params | backend    | ngl | type_k | type_v | fa |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | -----: | -----: | -: | --------------: | -------------------: |
+| qwen35moe 35B.A3B NVFP4        |  20.94 GiB |    34.66 B | CUDA       |  99 |   bf16 |   bf16 |  1 |         pp16384 |       5127.26 ± 4.31 |
+| qwen35moe 35B.A3B NVFP4        |  20.94 GiB |    34.66 B | CUDA       |  99 |   bf16 |   bf16 |  1 |          tg1024 |         88.10 ± 0.38 |
+
+build: 2098fd6 (1)
+
+```
